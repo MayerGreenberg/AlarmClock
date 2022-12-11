@@ -28,16 +28,15 @@ public class AlarmClock {
 					+ "\nAlarm will sound in " + 
 					AlarmTimes.hms(LocalTime.now().until(AlarmTimes.alarmStart, ChronoUnit.SECONDS))+ "\n");
 			if (AlarmTimes.isAlarmTime(test)) {
-
-				AlarmSounds.soundAlarm(test);
+				int sleepSec = AlarmSounds.soundAlarm(test);
 				boolean continueAlarm = AlarmVisual.alert("Alarm",
-						"Click OK to continue the alarm and play another vlc. Cancel to stop it", 50 * 1000);
+						"Click OK to continue the alarm and play another vlc. Cancel to stop it", sleepSec * 1000); 
 				if (!continueAlarm) {
 					AlarmSounds.killVlc();
 					System.exit(0);
 				}
 			} else
-				TimeUnit.SECONDS.sleep(1);
+				TimeUnit.SECONDS.sleep(60);
 		}
 	}
 }
