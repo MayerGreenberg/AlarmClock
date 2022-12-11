@@ -1,5 +1,3 @@
-package alarm_clock;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -18,10 +16,10 @@ import javax.swing.Timer;
 public class AlarmClock {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		boolean test = false;;
+		boolean test = false;
 		for (int i = 0; i < Integer.MAX_VALUE; i++) {
-			System.out.println(i + " --- " + new Date());
 			AlarmTimes.setAlarmTimes();
+			System.out.println(i + " --- " + new Date() + "\n" + AlarmTimes.alarmStart + "-->" + AlarmTimes.alarmStop);
 			if (AlarmTimes.isAlarmTime(test)) {
 
 				AlarmSounds.soundAlarm(test);
